@@ -1,0 +1,23 @@
+# Log Analyzer
+
+A small Python tool that reads a server log and flags IP addresses with repeated failed logins. I built it as my first project while learning cybersecurity.
+
+## How it works
+The script reads `server.log` line by line. For every failed login, it adds one to that IP's count in a dictionary. Any IP with more than 2 failures is flagged as suspicious and saved to `report.txt`.
+
+## How to run it
+    py log_analyzer.py
+
+## What I learned
+- How to read and write files in Python
+- How dictionaries can count things
+- The difference between write mode ("w") and append mode ("a")
+- Basic Git: init, add, commit, push
+
+## What broke
+- I ran `git init` in my user folder instead of the project folder, so Git tried to stage an Android project. I fixed it by deleting the accidental `.git` folder and starting again in the right place. Now I check my folder with `pwd` before any Git command.
+- My file wouldn't save into the folder at first, so I created it from the terminal instead.
+
+## Next steps
+- Read a more realistic log format
+- Flag successful logins that follow many failures
