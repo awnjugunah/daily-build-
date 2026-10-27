@@ -17,3 +17,8 @@ print("Suspicious IPs:")
 for ip, count in counts.items():
     if count > 2:
         print("ALERT:", ip, "failed", count, "times")    
+with open("report.txt", "w") as report:
+    report.write("Suspicious IPs\n")
+    for ip, count in counts.items():
+        if count > 2:
+            report.write(ip + " failed " + str(count) + " times\n")        
