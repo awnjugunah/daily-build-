@@ -13,3 +13,7 @@ for line in lines:
 
 for ip, count in counts.items():
     print(ip, ":", count)
+print("Suspicious IPs:")
+for ip, count in counts.items():
+    if count > 2:
+        print("ALERT:", ip, "failed", count, "times")    
