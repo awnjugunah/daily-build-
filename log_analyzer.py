@@ -1,24 +1,13 @@
-with open("server.log") as f:
+with open("auth.log") as f:
     lines = f.readlines()
 
-print("Log analyzer started")
-print("Total lines:", len(lines))
+counts= {}
 
-counts = {}
-
-for line in lines:
+for line in lines :
     if "Failed" in line:
-        ip = line.split()[-1]
-        counts[ip] = counts.get(ip, 0) + 1
+        parts =line.split()
+        ip =parts[7]
+        counts[ip]=counts.get(ip ,0) +1
 
 for ip, count in counts.items():
-    print(ip, ":", count)
-print("Suspicious IPs:")
-for ip, count in counts.items():
-    if count > 2:
-        print("ALERT:", ip, "failed", count, "times")    
-with open("report.txt", "w") as report:
-    report.write("Suspicious IPs\n")
-    for ip, count in counts.items():
-        if count > 2:
-            report.write(ip + " failed " + str(count) + " times\n")        
+    print(ip,":",count)
